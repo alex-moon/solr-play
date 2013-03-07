@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="example" version="1.5">
+	<types>
+		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+		<!-- @todo English and Lithuanian specific fields -->
+		<fieldType name="string_en" class="solr.StrField" sortMissingLast="true" />
+		<fieldType name="string_lt" class="solr.StrField" sortMissingLast="true" />
+	</types>
+	<fields>
+		<field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+		<field name="en" type="string_en" indexed="true" stored="true" required="true" multiValued="false" />
+		<field name="lt" type="string_lt" indexed="true" stored="true" required="true" multiValued="false" />
+	</fields>
+	<uniquekey>id</uniquekey>
+	<defaultSearchField>en</defaultSearchField>
+</schema>

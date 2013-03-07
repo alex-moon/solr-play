@@ -1,0 +1,57 @@
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/static/bootstrap.css">
+        <script src="/static/jquery.js"></script>
+        <style>
+            body { margin: 20px; }
+        </style>
+        <title>I AM SO SMRT</title>
+    </head>
+    <body>
+        <h1>I AM SO SMRT</h1>
+        <form class="well" method="GET">
+            <div class="row-fluid">
+                <div class="span1">
+                    <strong>Query</strong>
+                </div>
+                <div class="span10">
+                    <input type="text" name="query" value="{{ query }}" />
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span1">
+                    <strong>Price</strong>
+                </div>
+                <div class="span3">
+                    <label>between <input type="text" name="price_from" value="{{ price_from }}" /></label>
+                </div>
+                <div class="span4">
+                    <label>and <input type="text" name="price_to" value="{{ price_to }}" /></label>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12"><strong>Areas</strong></div>
+                {% for area, count_selected in areas.items %}
+                    {% with count=count_selected.0 selected=count_selected.1 %}
+                        <div class="span3">
+                            <label>{{ area }} ({{ count }}) <input type="checkbox" name="areas" value="{{ area }}" {% if selected %}checked=checked{% endif %} /></label>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+                </div>
+            </div>
+            <div class="row-fluid">
+                <button type="submit" class="btn btn-primary">Go</button>
+            </div>
+        </form>
+        {% for result in results %}
+            <div class="well" style="background: #fff; padding: 0.2em 1em">
+                <h2 style="font-size: 120%; margin: 0.5em 0">
+                    <a target="_blank" href="{{ result.link }}">{{ result.title }}</a>
+                </h2>
+                <p>{{ result.summary | safe }}</p>
+                <p><strong>Price: </strong> £{{ result.price }}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+READER_URL = 'http://www.google.co.uk/reader/atom/feed/'
+COOKIE = 'GRLD=UNSET:06526090316689006322; NID=67=wWema3lysEbSnL8ZZoodmwYjoSpKvcuBDwO3xxN_DkFldIpiG5R3Sqjmqhtt1M_QxEaqKriy3kAyYjNUdWHzuexylKcm7fweDvrCmhJhYkFwXiJmHe7_l4o4_6pEqy0N5StO-ycYh0sKt00TvDUj9b1R_a2FZjMmCiUbuAD5Db_GK4GrpFA5pA; HSID=AQflZ1n7DgvGAmQNH; APISID=iBQ6UzA4VzUc5xIP/AyHsy6fdoE-xJlimg; SID=DQAAAL0AAADVtVSlcPFE3LtkJsTGDb98ny6xk-lwvhIYyEAYxGTGNFyHnk_DZd1whjiZM6mkaWUxu448woTQmBereg6U_9dcyvrS-VjKYc0ZNMc6CtaSqvwBRjy6zkQ4S7rdXWwM5g7VPlUY_dVgT396-pR-n7c3L6kLh_2xxHNb8rHhPU5xraWI0KRjgibUrBHdgivO18X-RYI1TGP_zmggEj5WONjh_JYT9r9PMFNzu2aMbAqbz1H7WN7CzP9TVDLV7xxS2_0'
+AREAS = {
+    'Biomedical Sciences': 'http://www.springer.com/east/home/biomed/rssfeed?SGWID=5-124-820-0-0',
+    'Chemistry': 'http://www.springer.com/chemistry?SGWID=5-135-820-0-0',
+    'Economics': 'http://www.springer.com/economics?SGWID=5-165-820-0-0',
+    'Engineering': 'http://www.springer.com/engineering?SGWID=5-175-820-0-0',
+    'Life Sciences': 'http://www.springer.com/life+sciences?SGWID=5-10027-820-0-0',
+    'Materials': 'http://www.springer.com/materials?SGWID=5-10041-820-0-0',
+    'Medicine': 'http://www.springer.com/medicine?SGWID=5-10054-820-0-0',
+    'Physics': 'http://www.springer.com/physics?SGWID=5-10100-820-0-0',
+    'Public Health': 'http://www.springer.com/public+health?SGWID=5-40467-820-0-0',
+    'Statistics': 'http://www.springer.com/statistics?SGWID=5-10128-820-0-0',
+    'Business & Management': 'http://www.springer.com/business+%26+management?SGWID=5-40517-820-0-0',
+    'Computer Sciences': 'http://www.springer.com/computer?SGWID=5-146-820-0-0',
+    'Education & Language': 'http://www.springer.com/education+%26+language?SGWID=5-40406-820-0-0',
+    'Environmental Sciences': 'http://www.springer.com/environment?SGWID=5-198-820-0-0',
+    'Earth Sciences & Geography': 'http://www.springer.com/earth+sciences+and+geography?SGWID=5-10006-820-0-0',
+    'Law': 'http://www.springer.com/law?SGWID=5-10017-820-0-0',
+    'Linguistics': 'http://www.springer.com/education+%26+language/linguistics?SGWID=5-40369-820-0-0',
+    'Mathematics': 'http://www.springer.com/mathematics?SGWID=5-10042-820-0-0',
+    'Philosophy': 'http://www.springer.com/philosophy?SGWID=5-40385-820-0-0',
+    'Psychology': 'http://www.springer.com/psychology?SGWID=5-10126-820-0-0',
+    'Social Sciences': 'http://www.springer.com/social+sciences?SGWID=5-40384-820-0-0',
+}

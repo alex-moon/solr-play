@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <luceneMatchVersion>LUCENE_41</luceneMatchVersion>
+    <lib dir="../../../contrib/extraction/lib" regex=".*\.jar" />
+    <lib dir="../../../dist/" regex="solr-cell-\d.*\.jar" />
+
+    <lib dir="../../../contrib/clustering/lib/" regex=".*\.jar" />
+    <lib dir="../../../dist/" regex="solr-clustering-\d.*\.jar" />
+
+    <lib dir="../../../contrib/langid/lib/" regex=".*\.jar" />
+    <lib dir="../../../dist/" regex="solr-langid-\d.*\.jar" />
+
+    <lib dir="../../../contrib/velocity/lib" regex=".*\.jar" />
+    <lib dir="../../../dist/" regex="solr-velocity-\d.*\.jar" />
+
+    <lib dir="../../../dist/" regex="apache-solr-dataimporthandler-\d.*\.jar" />
+    <dataDir>${solr.data.dir:/home/moona/work/solr/play/solr/sekmes/data}</dataDir>
+    <directoryFactory name="DirectoryFactory" 
+                    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/>
+    <indexConfig />
+    <jmx />
+    <updateHandler class="solr.DirectUpdateHandler2" />
+    <query>
+        <listener event="newSearcher" class="solr.QuerySenderListener">
+          <arr name="queries">
+          </arr>
+        </listener>
+        <listener event="firstSearcher" class="solr.QuerySenderListener">
+          <arr name="queries">
+            <lst>
+              <str name="q">static firstSearcher warming in solrconfig.xml</str>
+            </lst>
+          </arr>
+        </listener>
+    </query>
+    <requestDispatcher handleSelect="true" >
+        <requestParsers enableRemoteStreaming="true" 
+                        multipartUploadLimitInKB="2048000"
+                        formdataUploadLimitInKB="2048"/>
+        <httpCaching never304="true" />
+    </requestDispatcher>
+    <requestHandler name="/select" class="solr.SearchHandler">
+        <lst name="defaults">
+            <str name="echoParams">explicit</str>
+            <int name="rows">10</int>
+            <str name="df">en</str>
+        </lst>
+    </requestHandler>
+    <requestHandler name="/query" class="solr.SearchHandler">
+        <lst name="defaults">
+            <str name="echoParams">explicit</str>
+            <str name="wt">json</str>
+            <str name="indent">true</str>
+            <str name="df">en</str>
+        </lst>
+    </requestHandler>
+    <requestHandler name="/get" class="solr.RealTimeGetHandler">
+        <lst name="defaults">
+            <str name="omitHeader">true</str>
+            <str name="wt">json</str>
+            <str name="indent">true</str>
+        </lst>
+    </requestHandler>
+    <requestHandler name="/update" class="solr.UpdateRequestHandler" />
+    <requestHandler name="/update/json" class="solr.JsonUpdateRequestHandler">
+        <lst name="defaults">
+            <str name="stream.contentType">application/json</str>
+        </lst>
+    </requestHandler>
+    <requestHandler name="/update/csv" class="solr.CSVRequestHandler">
+        <lst name="defaults">
+            <str name="stream.contentType">application/csv</str>
+        </lst>
+    </requestHandler>
+    <requestHandler name="/update/csv" 
+                  class="solr.CSVRequestHandler" 
+                  startup="lazy" />
+    <requestHandler name="/admin/" class="solr.admin.AdminHandlers" />
+    <queryResponseWriter name="json" class="solr.JSONResponseWriter">
+        <str name="content-type">text/plain; charset=UTF-8</str>
+    </queryResponseWriter>
+    <admin>
+        <defaultQuery>*:*</defaultQuery>
+    </admin>
+
+  <!--searchComponent name="clustering"
+                   enable="${solr.clustering.enabled:false}"
+                   class="solr.clustering.ClusteringComponent" >
+    <lst name="engine">
+      <str name="name">default</str>
+      <str name="carrot.algorithm">org.carrot2.clustering.lingo.LingoClusteringAlgorithm</str>
+      <str name="LingoClusteringAlgorithm.desiredClusterCountBase">20</str>
+      <str name="carrot.lexicalResourcesDir">clustering/carrot2</str>
+      <str name="MultilingualClustering.defaultLanguage">ENGLISH</str>
+    </lst>
+    <lst name="engine">
+      <str name="name">stc</str>
+      <str name="carrot.algorithm">org.carrot2.clustering.stc.STCClusteringAlgorithm</str>
+    </lst>
+  </searchComponent-->
+
+  <searchComponent name="terms" class="solr.TermsComponent"/>
+  <requestHandler name="/terms" class="solr.SearchHandler" startup="lazy">
+     <lst name="defaults">
+      <bool name="terms">true</bool>
+      <bool name="distrib">false</bool>
+    </lst>     
+    <arr name="components">
+      <str>terms</str>
+    </arr>
+  </requestHandler>
+</config>
